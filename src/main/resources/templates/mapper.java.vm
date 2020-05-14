@@ -1,0 +1,18 @@
+package $!{package.Mapper};
+
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import $!{package.Entity}.$!{entity}Entity;
+
+#set($table.comment = $!table.comment.replace('表',''))
+/**
+* $!table.comment mapper
+* @author:$!cfg.author
+* @Time: $!date
+* @Copyright: ©  杭州凯立通信有限公司 版权所有
+* @Warning: 本内容仅限于公司内部传阅,禁止外泄或用于其它商业目的
+*/
+@Mapper
+public interface $!{entity}Mapper extends BaseMapper<$!{entity}Entity> {
+
+}

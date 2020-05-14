@@ -1,0 +1,34 @@
+package $!{package.Entity};
+
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+import io.swagger.annotations.ApiModelProperty;
+import com.kaili.demo.common.bean.BaseEntity;
+import lombok.Data;
+
+import java.util.Date;
+
+#set($table.comment = $!table.comment.replace('表',''))
+/**
+* $!table.comment entity
+* @author:$!cfg.author
+* @Time: $!date
+* @Copyright: ©  杭州凯立通信有限公司 版权所有
+* @Warning: 本内容仅限于公司内部传阅,禁止外泄或用于其它商业目的
+*/
+@Data
+@TableName("$!{table.name}")
+public class $!{entity}Entity extends BaseEntity {
+#foreach($!element in $!table.fields)
+#if($!element.name == "create_by" || $!element.name == "create_time" || $!element.name == "modify_by" || $!element.name == "modify_time")
+#else
+#if($!element.keyIdentityFlag)
+	@TableId(value = "$!element.name", type = IdType.AUTO)
+#end
+    @ApiModelProperty("$!element.comment")
+    private $!element.columnType.type $!element.propertyName;
+
+#end
+#end
+}
